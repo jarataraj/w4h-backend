@@ -1,0 +1,5 @@
+GET http://localhost:3003/api/forecast/35.75-281.25
+###
+
+DELETE http://localhost:3003/api/charts/testName.png
+###
