@@ -5,6 +5,7 @@ const app = express();
 const cors = require("cors");
 const forecastsRouter = require("./controllers/forecasts");
 const chartsRouter = require("./controllers/charts");
+const searchRouter = require("./controllers/search");
 // const usersRouter = require("./controllers/users");
 // const loginRouter = require("./controllers/login");
 const middleware = require("./utils/middleware");
@@ -30,6 +31,7 @@ app.use(express.json());
 
 app.use("/api/forecast", forecastsRouter);
 app.use("/api/charts", chartsRouter);
+app.use("/api/search", searchRouter);
 // app.use("/api/users", usersRouter);
 // app.use("/api/login", loginRouter);
 

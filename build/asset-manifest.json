@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.9f22c15b.css",
-    "main.js": "/static/js/main.be09483f.js",
-    "static/media/Coverage_MillerCropped.png": "/static/media/Coverage_MillerCropped.695ab906bb8330b33958.png",
+    "main.css": "/static/css/main.57a110ff.css",
+    "main.js": "/static/js/main.89c24f32.js",
+    "static/media/Coverage_MillerCropped_Pattern.png": "/static/media/Coverage_MillerCropped_Pattern.3c83c7ca1f21a1a491b3.png",
     "static/media/MillerCropped.png": "/static/media/MillerCropped.45c6929b85cafd290beb.png",
     "static/media/MillerCroppedNew.png": "/static/media/MillerCroppedNew.1b75f2d5b7d59956a1b6.png",
     "static/media/OpenSauceSans-Light.ttf": "/static/media/OpenSauceSans-Light.9385ec08a8fcfe6caed8.ttf",
     "static/media/OpenSauceSans-Medium.ttf": "/static/media/OpenSauceSans-Medium.37cae5f97546f943ed3e.ttf",
     "static/media/OpenSauceSans-Regular.ttf": "/static/media/OpenSauceSans-Regular.8328c8e5b6675425322a.ttf",
     "index.html": "/index.html",
-    "main.9f22c15b.css.map": "/static/css/main.9f22c15b.css.map",
-    "main.be09483f.js.map": "/static/js/main.be09483f.js.map"
+    "main.57a110ff.css.map": "/static/css/main.57a110ff.css.map",
+    "main.89c24f32.js.map": "/static/js/main.89c24f32.js.map"
   },
   "entrypoints": [
-    "static/css/main.9f22c15b.css",
-    "static/js/main.be09483f.js"
+    "static/css/main.57a110ff.css",
+    "static/js/main.89c24f32.js"
   ]
 }
