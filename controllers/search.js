@@ -102,7 +102,6 @@ searchRouter.get("/", async (req, res) => {
     if (!(rawLocation.lat && rawLocation.lon)) {
         return res.status(404).json({ message: "Try a different search" });
     }
-    console.log("rawLocation: ", rawLocation);
     const location = getForecastLocation(rawLocation);
     const forecast = await Forecast.findById(location.forecastId);
 
