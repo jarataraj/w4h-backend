@@ -11,6 +11,7 @@ const searchRouter = require("./controllers/search");
 const middleware = require("./utils/middleware");
 const logger = require("./utils/logger");
 const mongoose = require("mongoose");
+const stateRouter = require("./controllers/state");
 
 // logger.info("connecting to", config.MONGODB_URI);
 
@@ -32,6 +33,7 @@ app.use(express.json());
 app.use("/api/forecast", forecastsRouter);
 app.use("/api/charts", chartsRouter);
 app.use("/api/search", searchRouter);
+app.use("/api/state", stateRouter);
 // app.use("/api/users", usersRouter);
 // app.use("/api/login", loginRouter);
 
