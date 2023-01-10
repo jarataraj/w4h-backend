@@ -3,7 +3,7 @@ const { adminOnly } = require("../utils/middleware");
 
 let state = {
     latestSuccessfulUpdateSource: null,
-    updating: false,
+    isUpdating: false,
 };
 
 stateRouter.get("/", async (req, res) => {
