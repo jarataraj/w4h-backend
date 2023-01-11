@@ -11,7 +11,6 @@ statusRouter.get("/", async (req, res) => {
 });
 
 statusRouter.post("/", adminOnly, (req, res) => {
-    console.log(req.body);
     const update = Object.entries(req.body).filter(([key]) =>
         Object.hasOwn(status, key)
     );

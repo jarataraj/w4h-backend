@@ -26,7 +26,11 @@ const errorHandler = (error, request, response, next) => {
 
 const adminOnly = (req, res, next) => {
     let auth = req.get("Authorization")?.split(" ");
-    if (!auth || auth[0] !== "apikey" || auth[1] === process.env.ADMINKEY) {
+    if (
+        !auth ||
+        auth[0] !== "apikey" ||
+        auth[1] !== process.env.ADMIN_API_KEY
+    ) {
         return res.status(401).end();
     }
     next();
