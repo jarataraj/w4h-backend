@@ -12,6 +12,7 @@ const middleware = require("./utils/middleware");
 const logger = require("./utils/logger");
 const mongoose = require("mongoose");
 const statusRouter = require("./controllers/status");
+const monitorForNewData = require("./utils/monitorForNewData");
 
 // logger.info("connecting to", config.MONGODB_URI);
 
@@ -39,5 +40,7 @@ app.use("/api/status", statusRouter);
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
+
+// monitorForNewData();
 
 module.exports = app;
