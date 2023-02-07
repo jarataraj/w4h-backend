@@ -14,4 +14,4 @@ forecastSchema.set("toJSON", {
     },
 });
 
-module.exports = mongoose.model("Forecast", forecastSchema);
+module.exports = mongoose.model("Forecast", forecastSchema, "forecasts2");
