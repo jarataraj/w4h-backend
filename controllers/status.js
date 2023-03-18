@@ -1,29 +1,61 @@
 const statusRouter = require("express").Router();
 const { adminOnly } = require("../utils/middleware");
 const Status = require("../models/status");
+const mongoose = require("mongoose");
 
-// let status = {
-//     latestSuccessfulUpdateSource: null,
-//     isUpdating: false,
-// };
+const fiveMinMillisec = 5 * 60 * 1000;
+
+const status = {
+    _lastUpdated: 0,
+    _status: null,
+    _error: false,
+    get status() {
+        const now = Date.now();
+        // update if more than 5 min have passed or cache holds error
+        if (now - this._lastUpdated > fiveMinMillisec || this._error) {
+            this._lastUpdated = now;
+            // _status must hold promise since findById is thenable
+            this._status = new Promise((resolve, reject) => {
+                Status.findById("status").then(
+                    (result) => resolve(result),
+                    (error) => {
+                        this._error = true;
+                        reject(error);
+                    }
+                );
+            });
+        }
+        return this._status;
+    },
+};
+
+// NOTE: Atlas Serverless does not support change streams
+// [source](https://www.mongodb.com/docs/atlas/reference/serverless-instance-limitations/)
+// mongoose.connection.asPromise().then(() => {
+//     Status.watch().on("change", (data) => {
+//         console.log(data);
+//     });
+// });
 
 statusRouter.get("/", async (req, res) => {
-    const status = await Status.findOne();
-    res.json(status);
+    // await the promise returned by status.status()
+    res.json(await status.status);
 });
 
 statusRouter.post("/", adminOnly, async (req, res) => {
-    let status = await Status.findById("status");
+    let currentStatus = await Status.findById("status");
     const update = req.body;
-    if (!status) {
-        status = new Status({ _id: "status", ...update });
+    if (!currentStatus) {
+        currentStatus = new Status({ _id: "status", ...update });
     } else {
+        // can't use spread operation. Must update keys of original object
+        // in order to use Mongoose's doc.save()
         for (let key of Object.keys(update)) {
-            status[key] = update[key];
+            currentStatus[key] = update[key];
         }
     }
-    await status.save();
-    res.json(status);
+    await currentStatus.save();
+    res.json(currentStatus);
 
     // const update = Object.entries(req.body).filter(([key]) =>
     //     Object.hasOwn(status, key)
