@@ -3,4 +3,4 @@ Node/Express backend for [weatherforhumans.com](https://www.weatherforhumans.com
 
 ## Some nice features:
 - utils/RateLimitedTaskQueue.js provides an easy interface for asynchronous rate-limiting of third-party API requests with a timeout, as used in controllers/search.js for Nominatim geolocation and reverse-geolocation requests
-- scalable design where each instance polls the database to maintain a record of the latest data source and global charts available. Frontends poll a status endpoint (seen in controllers/status.js) to stay informed and update when new data is availalbe
+- scalable design where each instance polls the database to maintain a record of the latest data source and global charts available. Frontends poll a status endpoint (seen in controllers/status.js) to stay informed and update when new data is available
